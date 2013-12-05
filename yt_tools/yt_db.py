@@ -66,7 +66,7 @@ class yt_DB_my:
             self.connect()
             self.cursor.executemany("""INSERT INTO yt_videos (id) VALUES (%s)""", ids_video)
             self.disconnect()
-            self.log('Added videos with ids: ' + ' '.join(ids_video))
+            self.logger.log('Added videos with ids: ' + ' '.join(ids_video))
 
     def get_all_videos(self, status=-1):
         self.connect()
