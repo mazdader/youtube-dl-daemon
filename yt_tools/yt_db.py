@@ -1,5 +1,5 @@
 import MySQLdb
-
+from yt_tools import yt_logger
 
 class yt_DB_my:
 
@@ -15,6 +15,8 @@ class yt_DB_my:
 
         if self.connection_test():
             self.disconnect()
+
+        self.logger = yt_logger.yt_Logger()
 
     def connection_test(self):
         try:
@@ -92,8 +94,4 @@ class yt_DB_my:
         else:
             return False
 
-    def log(self, log_text):
-        self.connect()
-        self.cursor.execute("""INSERT INTO yt_log (log_text) VALUES (%s)""", log_text)
-        self.disconnect()
 
